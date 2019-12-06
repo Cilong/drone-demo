@@ -22,10 +22,10 @@ steps:
     settings:
       repo: Cilong/drone-demo
       use_cache: true
-#      username:
-#        from_secret: docker_username
-#      password:
-#        from_secret: docker_password
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
     tags:
       - latest
     when:
