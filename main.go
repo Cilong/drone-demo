@@ -2,14 +2,21 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
+	"net/http"
 )
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "hello",
+
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"health": true,
 		})
 	})
-	r.Run(":8001") // listen and serve on 0.0.0.0:8080
+
+	if err := r.Run(":8001"); err != nil {
+		logrus.WithError(err).Fatal("Couldn't listen")
+	}
+
 }
