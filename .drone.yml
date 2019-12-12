@@ -20,7 +20,7 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      repo: Cilong/drone-demo
+      repo: cilong/drone-demo
       use_cache: true
       username:
         from_secret: docker_username
